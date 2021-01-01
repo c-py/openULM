@@ -29,6 +29,8 @@ defmodule OpenULMWeb.Router do
     pipe_through [:browser, :protected]
 
     get "/", IndexController, :index
+    resources "/directory/people", PersonController
+    resources "/directory/groups", GroupController
   end
 
   # Other scopes may use custom stacks.

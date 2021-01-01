@@ -12,7 +12,7 @@
     <header>
       <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-          <a class="navbar-item">
+          <a class="navbar-item" href="/">
             <strong>openULM</strong>
           </a>
         </div>
@@ -39,7 +39,9 @@
       </nav>    
     </header>
     <section class="section">
-        <%= @inner_content %>
+        <div class="container">
+          <%= @inner_content %>
+        </div>
     </section>
   </body>
 </html>
