@@ -1,20 +1,21 @@
 # OpenULM
 
-To start your Phoenix server:
+Open User Lifecycle Management (OpenULM) is a free application to onboard manage the lifecycle of application users.
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.setup`
-  * Install Node.js dependencies with `npm install` inside the `assets` directory
-  * Start Phoenix endpoint with `mix phx.server`
+Contributions Welcome.
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+## Developing
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+1. To set up the development environment create a `.env` file and populate with the snippet below. Replace the placeholders `< >` with sane values.
 
-## Learn more
+```
+SECRET_KEY_BASE=<INSERT A RANDOM KEY>
+PGUSER=<POSTGRES USER>
+PGPASSWORD=<POSTGRES PASSWORD>
+PGDATABASE=openulm
+PGPORT=5432
+PGHOST=db
+```
 
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+2. To start the development server run `docker-compose up`
+3. To run `mix` commands use `docker-compose run`. For example to reset the database run `docker-compose run --rm phoenix mix ecto.reset`
