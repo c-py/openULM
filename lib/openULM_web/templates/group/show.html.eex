@@ -1,13 +1,45 @@
-<h1>Show Group</h1>
+<%= link to: Routes.group_path(@conn, :index) do %>
+  <div class="block">
+    <span class="icon">
+      <i class="fa fa-chevron-circle-left"></i>
+    </span>
+    <span>Groups</span>
+  </div>
+<% end %>
 
-<ul>
+<div class="columns">
+  <div class="column is-one-third">
+    <h1 class="title"><%= @group.name %></h1>
+    <table class="table is-bordered is-narrow is-hoverable">
+      <tr>
+        <td><strong>Name</strong></td>
+        <td><%= @group.name %></td>
+      </tr>
+    </table>
+    <%= button "Edit", to: Routes.group_path(@conn, :edit, @group), method: :get, class: "button" %>
+  </div>
+  <div class="column is-two-thirds">
+    <div class="card">
+      <header class="card-header">
+        <p class="card-header-title">People</p>
+      </header>
+      <div class="card-content">
+        <div class="content">
+          <table class="table">
+            <tbody>
+            <%= for person <- @group.people do %>
+              <tr>
+                <td><%= person %></td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+          <%= button to: Routes.group_path(@conn, :edit, @group), method: :get, class: "button" do %>
+            Add People to <%= @group.name %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-  <li>
-    <strong>Name:</strong>
-    <%= @group.name %>
-  </li>
-
-</ul>
-
-<span><%= link "Edit", to: Routes.group_path(@conn, :edit, @group) %></span>
-<span><%= link "Back", to: Routes.group_path(@conn, :index) %></span>

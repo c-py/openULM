@@ -1,5 +1,11 @@
-<h1>Edit Group</h1>
+<%= link to: Routes.group_path(@conn, :show, @group) do %>
+  <div class="block">
+    <span class="icon">
+      <i class="fa fa-chevron-circle-left"></i>
+    </span>
+    <span>View <%= @group.name %></span>
+  </div>
+<% end %>
+<h1 class="title">Editing <%= @group.name %></h1>
 
 <%= render "form.html", Map.put(assigns, :action, Routes.group_path(@conn, :update, @group)) %>
-
-<span><%= link "Back", to: Routes.group_path(@conn, :index) %></span>

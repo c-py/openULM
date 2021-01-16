@@ -119,6 +119,7 @@ defmodule OpenULM.Directory do
   """
   def list_groups do
     Repo.all(Group)
+    |> Repo.preload(:people)
   end
 
   @doc """
@@ -135,7 +136,11 @@ defmodule OpenULM.Directory do
       ** (Ecto.NoResultsError)
 
   """
-  def get_group!(id), do: Repo.get!(Group, id)
+  def get_group!(id) do
+    Repo.get!(Group, id)
+    |> Repo.preload(:people)
+  end
+
 
   @doc """
   Creates a group.

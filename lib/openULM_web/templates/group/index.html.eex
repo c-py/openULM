@@ -1,26 +1,29 @@
-<h1>Listing Groups</h1>
+<%= link to: "/" do %>
+  <div class="block">
+    <span class="icon">
+      <i class="fa fa-chevron-circle-left"></i>
+    </span>
+    <span>Home</span>
+  </div>
+<% end %>
+<h1 class="title">Groups</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Name</th>
-
-      <th></th>
+      <th>People</th>
     </tr>
   </thead>
   <tbody>
-<%= for group <- @groups do %>
+  <%= for group <- @groups do %>
     <tr>
-      <td><%= group.name %></td>
-
-      <td>
-        <span><%= link "Show", to: Routes.group_path(@conn, :show, group) %></span>
-        <span><%= link "Edit", to: Routes.group_path(@conn, :edit, group) %></span>
-        <span><%= link "Delete", to: Routes.group_path(@conn, :delete, group), method: :delete, data: [confirm: "Are you sure?"] %></span>
-      </td>
+      <td><%= link group.name, to: Routes.group_path(@conn, :edit, group) %></td>
+      <td><%= length group.people %></td>
     </tr>
-<% end %>
+  <% end %>
   </tbody>
 </table>
 
-<span><%= link "New Group", to: Routes.group_path(@conn, :new) %></span>
+<%= button "New Group", to: Routes.group_path(@conn, :new),  method: :get,class: "button" %>
+
