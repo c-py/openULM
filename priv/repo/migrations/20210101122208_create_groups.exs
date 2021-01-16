@@ -3,7 +3,7 @@ defmodule OpenULM.Repo.Migrations.CreateGroups do
 
   def change do
     create table(:groups) do
-      add :name, :string
+      add :name, :string, null: false
 
       timestamps()
     end

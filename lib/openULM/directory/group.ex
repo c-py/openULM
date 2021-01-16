@@ -5,6 +5,8 @@ defmodule OpenULM.Directory.Group do
   schema "groups" do
     field :name, :string
 
+    many_to_many :people, OpenULM.Directory.People, join_through: OpenULM.Directory.PersonGroup
+
     timestamps()
   end
 

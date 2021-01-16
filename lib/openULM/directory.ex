@@ -19,6 +19,7 @@ defmodule OpenULM.Directory do
   """
   def list_people do
     Repo.all(Person)
+    |> Repo.preload(:groups)
   end
 
   @doc """
@@ -35,7 +36,10 @@ defmodule OpenULM.Directory do
       ** (Ecto.NoResultsError)
 
   """
-  def get_person!(id), do: Repo.get!(Person, id)
+  def get_person!(id) do
+    Repo.get!(Person, id)
+    |> Repo.preload(:groups)
+  end
 
   @doc """
   Creates a person.

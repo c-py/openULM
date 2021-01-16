@@ -5,7 +5,7 @@ defmodule OpenULM.Repo.Migrations.CreatePeople do
     create table(:people) do
       add :full_name, :string
       add :preferred_name, :string
-      add :email, :string
+      add :email, :string, null: false
 
       timestamps()
     end

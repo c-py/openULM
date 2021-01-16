@@ -7,6 +7,8 @@ defmodule OpenULM.Directory.Person do
     field :full_name, :string
     field :preferred_name, :string
 
+    many_to_many :groups, OpenULM.Directory.Group, join_through: OpenULM.Directory.PersonGroup
+
     timestamps()
   end
 
