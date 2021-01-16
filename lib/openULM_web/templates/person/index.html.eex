@@ -9,14 +9,14 @@
     </tr>
   </thead>
   <tbody>
-<%= for person <- @people do %>
+  <%= for person <- @people do %>
     <tr>
       <td><%= link person.full_name, to: Routes.person_path(@conn, :show, person) %> (<%= person.preferred_name %>)</td>
       <td><%= person.email %></td>
       <td><%= length person.groups %></td>
     </tr>
-<% end %>
+  <% end %>
   </tbody>
 </table>
 
-<span><%= link "New Person", to: Routes.person_path(@conn, :new), class: "button" %></span>
+<%= button "New Person", to: Routes.person_path(@conn, :new), method: :get, class: "button" %>

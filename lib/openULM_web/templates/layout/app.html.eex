@@ -39,9 +39,9 @@
       </nav>    
     </header>
     <section class="section">
-        <div class="container">
-          <%= @inner_content %>
-        </div>
+      <div class="container">
+        <%= @inner_content %>
+      </div>
     </section>
   </body>
 </html>

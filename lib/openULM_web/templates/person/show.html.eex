@@ -1,23 +1,52 @@
-<h1>Show Person</h1>
+<%= link to: Routes.person_path(@conn, :index) do %>
+  <div class="block">
+    <span class="icon">
+      <i class="fa fa-chevron-circle-left"></i>
+    </span>
+    <span>People</span>
+  </div>
+<% end %>
 
-<ul>
+<div class="columns">
+  <div class="column is-one-third">
+    <h1 class="title"><%= @person.full_name %></h1>
+    <h2 class="subtitle"><%= @person.email %></h2>
+    <table class="table is-bordered is-narrow is-hoverable">
+      <tr>
+        <td><strong>Full Name</strong></td>
+        <td><%= @person.full_name %></td>
+      </tr>
+      <tr>
+        <td><strong>Preferred</strong></td>
+        <td><%= @person.preferred_name %></td>
+      </tr>
+      <tr>
+        <td><strong>Email</strong></td>
+        <td><%= @person.email %></td>
+      </tr>
+    </table>
+    <%= button "Edit", to: Routes.person_path(@conn, :edit, @person), method: :get, class: "button" %>
+  </div>
+  <div class="column is-two-thirds">
+    <div class="card">
+      <header class="card-header">
+        <p class="card-header-title">Groups</p>
+      </header>
+      <div class="card-content">
+        <div class="content">
+          <table class="table">
+            <tbody>
+            <%= for group <- @person.groups do %>
+              <tr>
+                <td><%= group %></td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+          <%= button "Edit", to: Routes.person_path(@conn, :edit, @person), method: :get, class: "button" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-  <li>
-    <strong>Full name:</strong>
-    <%= @person.full_name %>
-  </li>
-
-  <li>
-    <strong>Preferred name:</strong>
-    <%= @person.preferred_name %>
-  </li>
-
-  <li>
-    <strong>Email:</strong>
-    <%= @person.email %>
-  </li>
-
-</ul>
-
-<span><%= link "Edit", to: Routes.person_path(@conn, :edit, @person) %></span>
-<span><%= link "Back", to: Routes.person_path(@conn, :index) %></span>

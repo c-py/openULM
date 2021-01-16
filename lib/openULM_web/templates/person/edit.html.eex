@@ -1,5 +1,11 @@
-<h1>Edit Person</h1>
+<%= link to: Routes.person_path(@conn, :show, @person) do %>
+  <div class="block">
+    <span class="icon">
+      <i class="fa fa-chevron-circle-left"></i>
+    </span>
+    <span>View <%= @person.full_name %></span>
+  </div>
+<% end %>
+<h1 class="title">Editing <%= @person.full_name %></h1>
 
 <%= render "form.html", Map.put(assigns, :action, Routes.person_path(@conn, :update, @person)) %>
-
-<span><%= link "Back", to: Routes.person_path(@conn, :index) %></span>
